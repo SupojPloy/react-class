@@ -19,6 +19,7 @@ class Quiz extends Component {
     addTodoTask() {
         this.setState({todo: this.state.todo+1, remain: this.state.remain+1});
         this.setState({ taskArray: [...this.state.taskArray, { id: this.state.remain+1, name: this.state.taskName} ] });
+        this.setState({ taskName: '' });
     }
 
     toogle(event) {
@@ -49,7 +50,7 @@ class Quiz extends Component {
     render() {
         return (
             <div className="margin">
-                <input type="text" onKeyUp={this.doInputText} />
+                <input type="text" onChange={this.doInputText} value={this.state.taskName} />
                 <button onClick={this.addTodoTask}>Add</button>
                 <p className="task-counter">{this.state.todo} remaining out of {this.state.remain} tasks</p>
                 <this.taskList tasks={this.state.taskArray} />
