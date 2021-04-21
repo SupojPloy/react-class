@@ -1,27 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
 import Clock from './Clock'
+import Form from './Form'
+import User from './User'
+import userEvent from '@testing-library/user-event';
+import { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Clock />
-      </header>
-    </div>
-  );
+class App extends Component {
+  users = [
+    { id: 1, name: "User 01", age: 10 },
+    { id: 2, name: "User 02", age: 20 },
+    { id: 3, name: "User 03", age: 30 },
+  ];
+
+  constructor() {
+    super();
+    this.state = { message: "-------"};
+    this.xyz = this.xyz.bind(this);
+  }
+
+  xyz(input) {
+    this.setState({message: "New section: " + input});
+  }
+
+  render() {
+    return (
+      <div>
+          <User users={this.users} />
+          <Clock />
+          <Form onSayHi={this.xyz}/>
+          <p>{this.state.message}</p>
+      </div>
+    );
+  }
 }
 
 export default App;

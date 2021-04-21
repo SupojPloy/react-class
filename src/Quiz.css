@@ -1,0 +1,10 @@
+.margin {
+  margin: 50px;
+}
+.is-done {
+  text-decoration: line-through;
+}
+
+.task-counter {
+  font-weight: bold;
+}
